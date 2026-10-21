@@ -41,7 +41,12 @@ Run these checks before outputting to the user:
 
 ---
 
-## Stage 6: Delivery & Repurposing
-- Deliver final publication-ready markdown.
-- Present optional cross-platform companion snippets (e.g. LinkedIn post summary or X tweet).
-- Record completed entry in `.tailorai/PROJECT_MAP.md`.
+## Stage 6: File Creation & Archiving
+- Write the finalized markdown content directly into the appropriate project path:
+  - Long-form blog/article: `Content/Articles/YYYY-MM-DD-[slug].md`
+  - Social media post / thread: `Content/Social/YYYY-MM-DD-[slug].md`
+  - Newsletter: `Content/Newsletters/YYYY-MM-DD-[slug].md`
+  - Case Study: `Content/Case_Studies/YYYY-MM-DD-[slug].md`
+- Clear the active task in `.tailorai/ACTIVE_TASKS.md`.
+- Record a completed row in `.tailorai/PROJECT_MAP.md` archive.
+- Present clickable file links to the user.

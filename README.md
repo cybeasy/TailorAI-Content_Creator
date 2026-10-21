@@ -64,32 +64,25 @@ Included alongside the Markdown-first workspace is an **Interactive Web Studio**
 
 ## 🛠️ Quickstart
 
-### Method 1: Markdown-First via Any AI Agent / IDE
 Works with **Antigravity**, **Cursor**, **Windsurf**, **Claude Code**, or **ChatGPT**:
-1. Open this workspace in your favorite IDE.
-2. Tell your AI Agent:
-   ```text
-   Read init-agent.md and execute Step 0
-   ```
-3. Answer the step-by-step interview. The agent will populate `.tailorai/` and activate your tailored Content Creator!
-4. Request your first content piece:
-   ```text
-   Write a 1,200-word SEO article explaining how our solution solves [problem]
-   ```
 
----
-
-### Method 2: Launch the Interactive Web Studio
-Prefer a visual dashboard? Launch the included local web studio:
-
-```bash
-# Option A: Using Node.js
-node web/server.js
-
-# Option B: Using Python
-python3 -m http.server 3050 --directory web/
+### Step 1: Run the Onboarding Setup Agent
+Instruct your AI agent:
+```text
+Read init-agent.md and execute Step 0
 ```
-Open **`http://localhost:3050`** in your browser to experience the 4-step Setup Wizard and real-time Content Studio.
+Follow the step-by-step questionnaire. The Setup Agent will ingest your knowledge base, record your brand voice, and write out your tailored [`.tailorai/Agent.md`](file://.tailorai/Agent.md).
+
+### Step 2: Request Your First Content Piece
+Ask the Content Creator Agent to write any piece:
+```text
+Write a 1,500-word SEO article about: [your topic]
+```
+The agent automatically:
+- Reads your brand guidelines and knowledge base facts.
+- Strips any AI clichés using the Anti-Slop filter.
+- Writes the article directly to [`Content/Articles/YYYY-MM-DD-[slug].md`](file://Content/Articles/).
+- Logs the delivery in [`.tailorai/PROJECT_MAP.md`](file://.tailorai/PROJECT_MAP.md).
 
 ---
 
@@ -101,6 +94,11 @@ TailorAi-Content_Creator/
 ├── AGENT_STRATEGY.md               # How & When (Runtime Operational Behavior)
 ├── init-agent.md                   # Master 6-Phase Onboarding Protocol
 ├── README.md                       # This documentation
+├── Content/                        # Generated Content Repository (Output Files)
+│   ├── Articles/                   # Long-form blog posts & SEO pillar guides (.md)
+│   ├── Social/                     # LinkedIn posts & X/Twitter threads (.md)
+│   ├── Newsletters/                # Email campaigns & broadcasts (.md)
+│   └── Case_Studies/               # Customer case studies & breakdowns (.md)
 ├── .tailorai/                      # Tailored Governance Directory
 │   ├── Agent.md                    # Runtime Constitution for Content Creator
 │   ├── ACTIVE_TASKS.md             # In-flight content generation register
@@ -112,7 +110,6 @@ TailorAi-Content_Creator/
 │   ├── Templates/                  # Skeletons for Articles, LinkedIn, Twitter, etc.
 │   ├── Skills/                     # Anti-AI Slop, Headlines, SEO skills
 │   └── Audits/                     # Quality & Fact-check assurance checklists
-└── web/                            # Interactive Web Studio (Vanilla HTML/CSS/JS)
 ```
 
 ---

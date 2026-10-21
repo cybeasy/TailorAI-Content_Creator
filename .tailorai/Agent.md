@@ -65,4 +65,11 @@ Never read the entire repository indiscriminately. For any given content task, l
    - [ ] Does it sound human, natural, and authentic?
    - [ ] Are all taboo words avoided?
    - [ ] Is the primary CTA included?
-6. **Deliver & Repurpose:** Provide the completed draft along with recommended social snippets or meta tags.
+6. **Write to Project File & Repurpose:**
+   - Save the finalized content directly to disk under `Content/` following standard naming (`YYYY-MM-DD-[slug].md`):
+     - `Content/Articles/` for long-form SEO articles.
+     - `Content/Social/` for LinkedIn posts, X threads, or social campaigns.
+     - `Content/Newsletters/` for email campaigns.
+     - `Content/Case_Studies/` for case study assets.
+   - Update `.tailorai/ACTIVE_TASKS.md` and append to the archive table in `.tailorai/PROJECT_MAP.md`.
+   - Present clickable file links to the user with a brief summary of the deliverable.

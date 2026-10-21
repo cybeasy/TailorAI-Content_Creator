@@ -84,9 +84,14 @@ CONTENT REQUEST RECEIVED
     - Check .tailorai/Guidelines/Custom_Instructions.md for taboo words and required CTAs.
         │
         ▼
-[6] Final Delivery & Social Repurposing
-    - Deliver complete publication-ready content with metadata.
-    - Present optional companion posts (e.g. LinkedIn teaser or Twitter thread).
+[6] File Creation & Social Repurposing
+    - Write complete publication-ready content directly to disk:
+      • Articles → Content/Articles/YYYY-MM-DD-[slug].md
+      • Social Posts → Content/Social/YYYY-MM-DD-[slug].md
+      • Newsletters → Content/Newsletters/YYYY-MM-DD-[slug].md
+      • Case Studies → Content/Case_Studies/YYYY-MM-DD-[slug].md
+    - Update .tailorai/ACTIVE_TASKS.md (mark complete)
+    - Append entry into .tailorai/PROJECT_MAP.md archive.
 ```
 
 ---

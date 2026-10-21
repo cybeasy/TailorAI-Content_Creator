@@ -46,6 +46,11 @@ TailorAi-Content_Creator/
 ├── AGENT_STRATEGY.md               # Operational Behavior & Strategy (How + When)
 ├── init-agent.md                   # Master Setup Protocol (Steps 0–5)
 ├── README.md                       # Repository Documentation & Quickstart
+├── Content/                        # Generated Content Repository (Created by Agent)
+│   ├── Articles/                   # Long-form blog posts & SEO pillar guides (.md)
+│   ├── Social/                     # LinkedIn posts & X/Twitter threads (.md)
+│   ├── Newsletters/                # Email campaigns & broadcasts (.md)
+│   └── Case_Studies/               # Customer case studies & breakdowns (.md)
 ├── .tailorai/                      # Master Governance Workspace
 │   ├── Agent.md                    # Runtime Constitution for the Tailored Creator
 │   ├── ACTIVE_TASKS.md             # In-flight Content Tasks Register
@@ -77,16 +82,6 @@ TailorAi-Content_Creator/
 │   └── Audits/
 │       ├── Brand_Voice_Audit.md
 │       └── Fact_Check_Audit.md
-└── web/                            # Interactive Setup & Creation Web Studio
-    ├── index.html
-    ├── css/
-    │   └── styles.css
-    ├── js/
-    │   ├── app.js
-    │   ├── setup-wizard.js
-    │   ├── content-engine.js
-    │   └── ui-effects.js
-    └── server.js                   # Lightweight Local Server
 ```
 
 ---
@@ -97,22 +92,23 @@ TailorAi-Content_Creator/
 - **Why:** Mixing onboarding questions with content generation leads to context drift, bloated prompts, and inconsistent tone.
 - **Solution:** The **Setup Agent** runs once (or during brand updates) to curate persistent Markdown artifacts in `.tailorai/`. The **Creator Agent** reads *only* these curated files at runtime.
 
-### Decision 2: Markdown-First System
-- **Why:** Every AI agent across every IDE (Antigravity, Cursor, Windsurf, Claude Code, ChatGPT, Gemini) can natively parse, validate, and execute Markdown protocols without proprietary lock-in.
+### Decision 2: Markdown-First System (No Scripts, Pure File Artifacts)
+- **Why:** Every AI agent across every IDE (Antigravity, Cursor, Windsurf, Claude Code, ChatGPT, Gemini) can natively parse, validate, and execute Markdown protocols.
+- **Output:** Every generated article or post is written directly to disk as a production-ready Markdown file inside `Content/`.
 
 ### Decision 3: Anti-AI Slop Guard as a Primary Component
 - **Why:** Readers quickly detect and ignore generic AI text containing words like "delve", "tapestry", "game changer", or meaningless summaries.
 - **Solution:** Dedicated skill file (`Anti_AI_Slop.md`) enforced in `.tailorai/Agent.md` that bans 30+ cliché patterns and forces original syntax and concrete examples.
 
-### Decision 4: Interactive Web Studio in Parallel
-- **Why:** While technical teams love running protocols in IDEs, marketing leads and non-technical clients prefer a visual UI with instant previews, file uploaders, and copy buttons.
-- **Solution:** A self-contained, high-performance web dashboard that can run locally or deployed.
+### Decision 4: Persistent File System & Task Logging
+- **Why:** Content marketing requires long-term memory to prevent repeating the same topics and to track publishing cadence.
+- **Solution:** Every piece created in `Content/` is registered in `.tailorai/ACTIVE_TASKS.md` and indexed permanently in `.tailorai/PROJECT_MAP.md`.
 
 ---
 
 ## 5. Dynamic Placeholder Contract
 
-When running `init-agent.md` or the Web Setup Wizard, the following tokens are populated:
+When running `init-agent.md`, the following tokens are populated:
 
 | Token | Scope | Example |
 |-------|-------|---------|
