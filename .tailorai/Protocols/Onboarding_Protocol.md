@@ -82,3 +82,7 @@
    - `.tailorai/Agent.md`
 2. Present a sample generated title and hook for user approval.
 3. Mark `.tailorai/PROJECT_MAP.md` as Configured!
+4. **Setup Folder / Artifacts Cleanup:**
+   - If executed inside a target repository with a cloned `TailorAi-Content_Creator/` folder, delete that folder (`rm -rf TailorAi-Content_Creator/`).
+   - If running directly in the workspace root, remove `init-agent.md`.
+5. Hand over the workspace to the user: only `.tailorai/` and `Content/` remain!

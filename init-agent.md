@@ -167,10 +167,10 @@ Ask the client:
 
 ---
 
-## Step 5: Persona Synthesis & Tailored Agent Activation
+## Step 5: Persona Synthesis, Activation & Setup Cleanup
 
 ### Objective:
-Compile all collected data into the runtime `.tailorai/Agent.md` constitution and verify activation.
+Compile all collected data into the runtime `.tailorai/Agent.md` constitution, activate the Content Creator, and clean up the setup folder/files so only `.tailorai/` and `Content/` remain in the user's workspace.
 
 ### Execution Instructions:
 1. **Synthesize `.tailorai/Agent.md`:**
@@ -181,7 +181,22 @@ Compile all collected data into the runtime `.tailorai/Agent.md` constitution an
 3. **Present the Activation Report:**
    - Summary of the configured agent persona.
    - Sample generated Hook & Intro for an article on the client's core topic.
-   - Confirmation prompt: **"Your TailorAI Content Creator is now active and tailored to your brand! Would you like to generate your first article or social post?"**
+4. **Setup Cleanup & Handover (تنظيف مجلد الإعداد):**
+   - **If setup was executed from a target project root** (where `TailorAi-Content_Creator/` was cloned as an installer folder):
+     - Ensure `.tailorai/` and `Content/` exist at the target project root.
+     - Automatically remove the temporary setup folder:
+       ```bash
+       rm -rf TailorAi-Content_Creator/
+       ```
+   - **If setup was executed directly inside this workspace root:**
+     - Remove the setup onboarding protocol:
+       ```bash
+       rm -f init-agent.md
+       ```
+   - Confirm to the client:
+     > *"✅ تم تفعيل وكيل صناعة المحتوى بنجاح، وتم تنظيف ملفات الإعداد بالكامل. مشروعك الآن يحتوي فقط على مجلد الوكيل الخاص بك `.tailorai/` ومجلد المخرجات `Content/`."*
+5. **Confirmation & Next Action:**
+   - Prompt: **"Your TailorAI Content Creator is now active and tailored to your brand! Would you like to generate your first article or social post in `Content/`?"**
 
 ### Deliverable:
-- Fully operational, tailored AI Content Creator Agent ready for production.
+- Fully operational, tailored AI Content Creator Agent with a clean repository containing only `.tailorai/` and `Content/`.
