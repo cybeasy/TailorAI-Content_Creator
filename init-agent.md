@@ -66,19 +66,34 @@ Prompt the client with the following questions (or extract them from existing fi
 Ingest client documentation, product sheets, and background context so the agent writes with factual authority.
 
 ### Execution Instructions:
-1. **Request Reference Documents:** Ask the client to provide or link any of the following:
-   - Company decks, whitepapers, or brochures.
-   - Product catalogs, feature lists, or technical documentation.
-   - Frequently Asked Questions (FAQs).
-   - Website links or existing high-performing articles/posts.
-   - Text summaries or raw notes placed in `.tailorai/Knowledge_Base/Sources/`.
-2. **Process & Index:**
-   - Summarize key findings into `.tailorai/Knowledge_Base/Overview.md`.
-   - List key products, features, USPs, and verified stats/data points.
-   - Flag any missing reference materials for future expansion.
+The Setup Agent supports **three flexible ingestion paths** depending on what the client provides:
+
+#### 🌐 Path A: Website URL Provided (رابط موقع إلكتروني)
+If the user provides a company or product URL (e.g. `https://mycompany.com`):
+1. **Fetch & Analyze Content:** Use web reading tools (e.g., `read_url_content` or HTTP GET) to inspect the homepage, About page, Features/Products, and FAQ.
+2. **Extract Key Components:**
+   - Exact value proposition & slogan.
+   - Core products, features, and capabilities.
+   - Verified customer statistics, proof points, or case studies.
+   - Pricing models and target audience signals.
+3. **Write to Knowledge Base:** Synthesize directly into `.tailorai/Knowledge_Base/Overview.md`.
+
+#### 📄 Path B: Files & Documents Provided (ملفات ومستندات)
+If the user uploads or places files in `.tailorai/Knowledge_Base/Sources/` (PDFs, Word docs, pitch decks, FAQs, raw notes):
+1. **Inspect & Extract:** Read files using file reading tools.
+2. **Catalog Findings:** Extract technical specifications, verified metrics, customer quotes, and product feature tables.
+3. **Archive & Index:** Store sources in `.tailorai/Knowledge_Base/Sources/` and index summaries in `.tailorai/Knowledge_Base/Overview.md`.
+
+#### 💡 Path C: Keyword or Short Concept Provided (مجرد كلمة أو فكرة مبسطة)
+If the client only has a brief idea or keyword (e.g., *"وكيل ذكاء اصطناعي للرد على العملاء على ماسنجر"* or *"SaaS Cloud Security"*):
+1. **Autonomous Knowledge Scaffolding:**
+   - Analyze the niche: extract standard industry problems, typical buyer personas, and critical pain points.
+   - Synthesize a comprehensive baseline draft in `.tailorai/Knowledge_Base/Overview.md` with recommended core features and common customer objections.
+2. **Interactive Validation Gate:**
+   - Present the drafted facts to the client: *"بناءً على تخصصكم في [الكلمة/المجال]، قمت بصياغة مصفوفة المعرفة التالية (الميزات، القيمة، المشكلات التي نحلها)... هل توافق عليها أم تحب نعدل أي أرقام أو تفاصيل محددة؟"*
 
 ### Deliverable:
-- Populated `.tailorai/Knowledge_Base/Overview.md` with indexed sources.
+- Thoroughly populated `.tailorai/Knowledge_Base/Overview.md` with indexed sources and verified facts.
 
 ---
 

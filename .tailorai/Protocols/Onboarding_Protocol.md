@@ -22,13 +22,20 @@
 
 ## Stage 2: Knowledge Base & Ingestion Flow
 
-### Prompt 2.1: Reference Materials
-> *"To ensure your Content Creator writes with authentic authority and exact product knowledge, do you have any documentation, pitch decks, whitepapers, or website pages to reference? You can upload files or paste text/links here."*
-- **Action:** Read files placed in `Knowledge_Base/Sources/` or parse provided snippets into `Knowledge_Base/Overview.md`.
+### Prompt 2.1: Reference Materials (Multi-modal Input)
+> *"لضمان أن يكتب صانع المحتوى بدقة ومصداقية كاملة عن منتجاتك وحقائق شركتك، ما هي المواد المرجعية المتاحة لديك؟*
+> - 🌐 **رابط موقع إلكتروني:** (إذا كان لديك موقع، فقط أرسل الرابط وسنقوم بفحص صفحاته واستخراج المنتجات والخدمات فوراً).
+> - 📄 **ملفات ووثائق:** (بروشورات، ملفات PDF، دراسات حالة، أو أسئلة شائعة تضعها في `.tailorai/Knowledge_Base/Sources/` أو ترسلها هنا).
+> - 💡 **مجرد كلمة أو فكرة مبسطة:** (إذا لم يكن لديك موقع أو ملفات، اذكر فقط تخصصك وسيقوم الوكيل ببحث وتأسيس قاعدة معرفية استقرائية للمجال ثم يعرضها عليك لتأكيدها)."*
 
-### Prompt 2.2: Proof Points & Numbers
-> *"Are there any verified metrics, customer statistics, or flagship features you want your agent to highlight? (e.g. 'Saved clients 30%', 'Over 5,000 customers', 'Proprietary AI engine')?"*
-- **Action:** Record in `Knowledge_Base/Overview.md` §3.
+### Action by Input Type:
+1. **If URL:** Fetch site pages via `read_url_content` / HTTP, extract mission, products, pricing, and stats into `Knowledge_Base/Overview.md`.
+2. **If Files:** Scan and parse documents from `.tailorai/Knowledge_Base/Sources/`, summarize into `Knowledge_Base/Overview.md`.
+3. **If Keyword/Brief Concept:** Perform domain research, scaffold a structured product & problem-solving matrix in `Knowledge_Base/Overview.md`, and confirm with the user.
+
+### Prompt 2.2: Verified Proof Points & Numbers
+> *"هل توجد أي أرقام أو إحصائيات معتمدة تخص شركتكم ترغب في إبرازها؟ (مثال: 'وفرنا 40% من الوقت'، 'أكثر من 5,000 عميل'، 'دعم فني 24/7')؟"*
+- **Action:** Record in `Knowledge_Base/Overview.md` §3 (Verified Metrics & Proof Points).
 
 ---
 
