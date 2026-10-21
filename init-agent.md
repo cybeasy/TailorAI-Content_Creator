@@ -139,8 +139,15 @@ Ask the client the following structured questions:
   - **English (US / UK):** Global tech / business tone.
   - **Bilingual / Arabizi / Tech-Arabic:** Arabic with English technical terms retained.
 
+#### 6. Output File Format Preference (صيغة وتنسيق حفظ الملفات):
+- ما هي الصيغة المفضلة لديك لحفظ مخرجات المحتوى والمقالات داخل مجلد `Content/`؟
+  - **A) Markdown (`.md`) [موصى به / الافتراضي]:** الصيغة العالمية الأكثر مرونة، متوافقة مع WordPress, Ghost, Substack, Notion، وأنظمة التدوين الحديثة.
+  - **B) Plain Text (`.txt`):** نص خام نقي وخالي من أي وسوم، ملائم للنسخ واللصق السريع ومسودات النشر الفوري.
+  - **C) Semantic HTML (`.html`):** كود ويب نظيف ومنظم بوسوم دلالية (`<article>`, `<h1>`, `<p>`, `<table>`) جاهز للإدراج المباشر في صفحات المواقع وقوالب الإيميل.
+  - **D) Dual Export (`.md` + `.html`):** حفظ نسختين معاً تلقائياً لكل مقالة.
+
 ### Deliverable:
-- Populated `.tailorai/Guidelines/Article_Standards.md` and `.tailorai/Guidelines/Social_Media_Standards.md`.
+- Populated `.tailorai/Guidelines/Article_Standards.md` and `.tailorai/Guidelines/Social_Media_Standards.md` (including preferred output format).
 
 ---
 

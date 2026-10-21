@@ -42,3 +42,14 @@
   - **Visual Elements:** Include at least one Markdown Comparison Table or Diagram or Callout Quote.
   - **Conclusion & Next Steps:** Forward-looking synthesis (never titled "Conclusion").
   - **Call to Action (CTA):** Seamless transition to {{PRIMARY_CTA}}.
+
+---
+
+## 4. Output File Format & Extension Rules
+
+- **Client Preferred Format:** `{{OUTPUT_FILE_FORMAT}}` (Default: `.md`)
+- **Formatting Standards by File Extension:**
+  - **`.md` (Markdown):** Full GitHub Flavored Markdown with `#`, `##`, `###`, tables `|---|`, blockquotes `>`, and alerts `> [!TIP]`.
+  - **`.txt` (Plain Text):** Clean formatting with blank lines between paragraphs, uppercase headers for sections, and ASCII bullet points (`- ` or `* `).
+  - **`.html` (Semantic HTML):** Clean, valid HTML5 with semantic tags (`<article>`, `<header>`, `<h1>`, `<p>`, `<ul>`, `<table>`), inline classes if needed, and meta tags embedded at the top.
+  - **Dual Mode:** When requested, write both `YYYY-MM-DD-[slug].md` and `YYYY-MM-DD-[slug].html`.

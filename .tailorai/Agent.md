@@ -66,7 +66,7 @@ Never read the entire repository indiscriminately. For any given content task, l
    - [ ] Are all taboo words avoided?
    - [ ] Is the primary CTA included?
 6. **Write to Project File & Repurpose:**
-   - Save the finalized content directly to disk under `Content/` following standard naming (`YYYY-MM-DD-[slug].md`):
+   - Save the finalized content directly to disk under `Content/` in the client's configured format (`.md`, `.txt`, or `.html` as defined in `Guidelines/Article_Standards.md`):
      - `Content/Articles/` for long-form SEO articles.
      - `Content/Social/` for LinkedIn posts, X threads, or social campaigns.
      - `Content/Newsletters/` for email campaigns.

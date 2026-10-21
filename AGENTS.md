@@ -22,10 +22,10 @@ At the start of **EVERY** session or request in this repository:
    - Start articles in media res with tension, insight, or data.
 
 4. **Direct File Creation Workflow:**
-   - When asked to create content, always save the output directly as a Markdown file in the appropriate project folder:
-     - **Articles / Blogs:** `Content/Articles/YYYY-MM-DD-[slug].md`
-     - **Social Media (LinkedIn / X / Facebook):** `Content/Social/YYYY-MM-DD-[slug].md`
-     - **Newsletters:** `Content/Newsletters/YYYY-MM-DD-[slug].md`
-     - **Case Studies:** `Content/Case_Studies/YYYY-MM-DD-[slug].md`
+   - When asked to create content, always save the output directly as a file in the client's configured format (`.md`, `.txt`, or `.html`) in the appropriate project folder:
+     - **Articles / Blogs:** `Content/Articles/YYYY-MM-DD-[slug].[md|txt|html]`
+     - **Social Media (LinkedIn / X / Facebook):** `Content/Social/YYYY-MM-DD-[slug].[md|txt|html]`
+     - **Newsletters:** `Content/Newsletters/YYYY-MM-DD-[slug].[md|txt|html]`
+     - **Case Studies:** `Content/Case_Studies/YYYY-MM-DD-[slug].[md|txt|html]`
    - Update [`.tailorai/ACTIVE_TASKS.md`](file://.tailorai/ACTIVE_TASKS.md) and append to [`.tailorai/PROJECT_MAP.md`](file://.tailorai/PROJECT_MAP.md).
    - Return clickable file links to the user.

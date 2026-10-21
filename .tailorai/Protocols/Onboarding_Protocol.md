@@ -58,6 +58,14 @@
 ### Prompt 3.3: Tone of Voice & Dialect
 > *"How should your brand voice feel to readers? (e.g., Authoritative, Friendly, Witty, Academic, Inspirational). And what language/dialect do you want as default? (e.g. Modern Standard Arabic فصحى, Egyptian مصري, Gulf خليجي, English)?"*
 
+### Prompt 3.4: Output File Format Preference
+> *"ما هي الصيغة التي تفضل أن يُنشئ بها الوكيل ملفات المقالات والمحتوى داخل مجلد `Content/`؟*
+> - 📄 **1. Markdown (`.md`) [الافتراضي]:** متوافق عالمياً مع WordPress, Ghost, Substack, Notion.
+> - 📝 **2. Plain Text (`.txt`):** نص خام بدون أي وسوم، ملائم للنسخ السريع.
+> - 🌐 **3. Semantic HTML (`.html`):** كود ويب جاهز للإدراج المباشر في قوالب المواقع والإيميل.
+> - 📦 **4. كلتا الصيغتين (`.md` + `.html`):** حفظ نسختين لكل مقال."*
+- **Action:** Record preferred format in `.tailorai/Guidelines/Article_Standards.md`.
+
 ---
 
 ## Stage 4: Special Instructions & Edge Cases
