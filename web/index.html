@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TailorAI — Content Creator & Agent Setup Studio</title>
+  <meta name="description" content="Tailored AI Content Creator Agent with 4-phase onboarding, knowledge base ingestion, and active anti-slop guard.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2306B6D4'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+</head>
+<body>
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <div class="app-container">
+    <!-- Top Navigation Header -->
+    <header class="navbar">
+      <a href="#" class="brand-wrapper" onclick="switchView('setup')">
+        <div class="brand-icon-box">✦</div>
+        <div class="brand-title-group">
+          <h1>TailorAI</h1>
+          <span class="brand-badge">Content Creator Engine</span>
+        </div>
+      </a>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs">
+        <button type="button" class="nav-tab-btn active" data-view="setup" onclick="switchView('setup')">
+          <span>🛠️</span>
+          <span data-i18n="tabSetup">إعداد العميل (Setup Agent)</span>
+        </button>
+        <button type="button" class="nav-tab-btn" data-view="studio" onclick="switchView('studio')">
+          <span>✍️</span>
+          <span data-i18n="tabStudio">استوديو المحتوى</span>
+        </button>
+        <button type="button" class="nav-tab-btn" data-view="workspace" onclick="switchView('workspace')">
+          <span>📁</span>
+          <span data-i18n="tabWorkspace">ملفات الحوكمة (.tailorai)</span>
+        </button>
+      </nav>
+
+      <!-- Language & Controls -->
+      <div class="nav-controls">
+        <button type="button" id="btnLangToggle" class="btn-icon" style="width: auto; padding: 0 16px;" onclick="toggleLanguage()">
+          English
+        </button>
+      </div>
+    </header>
+
+    <!-- Main View Switcher -->
+    <main class="main-view">
+      
+      <!-- ===================================================================
+           VIEW 1: SETUP AGENT (ONBOARDING & TAILORING WIZARD)
+           =================================================================== -->
+      <section id="view-setup" class="view-section active">
+        <div class="setup-hero">
+          <div class="setup-hero-badge">
+            <span>✨</span>
+            <span data-i18n="setupBadge">الخطوة الأولى: تهيئة الوكيل المخصص</span>
+          </div>
+          <h2 data-i18n="setupHeroTitle">إعداد صانع المحتوى بناءً على هوية شركتك</h2>
+          <p data-i18n="setupHeroDesc">
+            يقوم الـ Setup Agent بمحاورة العميل خطوة بخطوة لاستخلاص هوية الشركة، وقاعدة المعرفة، وقواعد المحتوى لإنشاء وكيل كتابة فريد.
+          </p>
+        </div>
+
+        <!-- Stepper Nodes -->
+        <div class="stepper-container">
+          <div class="step-node active" onclick="currentStep = 1; updateStepUI();">
+            <div class="step-circle">1</div>
+            <span class="step-label" data-i18n="step1Title">هوية الشركة</span>
+          </div>
+          <div class="step-connector"></div>
+
+          <div class="step-node" onclick="currentStep = 2; updateStepUI();">
+            <div class="step-circle">2</div>
+            <span class="step-label" data-i18n="step2Title">قاعدة المعرفة</span>
+          </div>
+          <div class="step-connector"></div>
+
+          <div class="step-node" onclick="currentStep = 3; updateStepUI();">
+            <div class="step-circle">3</div>
+            <span class="step-label" data-i18n="step3Title">إرشادات المحتوى</span>
+          </div>
+          <div class="step-connector"></div>
+
+          <div class="step-node" onclick="currentStep = 4; updateStepUI();">
+            <div class="step-circle">4</div>
+            <span class="step-label" data-i18n="step4Title">الطلبات الخاصة</span>
+          </div>
+        </div>
+
+        <!-- Wizard Card Box -->
+        <div class="wizard-card">
+          
+          <!-- STEP 1: COMPANY IDENTITY -->
+          <div id="stepContent1" class="wizard-step-content active">
+            <div class="step-header">
+              <h3>🏢 <span data-i18n="step1Title">هوية الشركة والنشاط التجاري</span></h3>
+              <p>نبدأ بجمع البيانات الأساسية التي تشكل شخصية وموقع علامتك في السوق.</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label data-i18n="companyNameLabel">اسم الشركة / العلامة التجارية</label>
+                <input type="text" id="inputCompanyName" class="form-input" data-i18n-placeholder="companyNamePlaceholder" placeholder="مثال: Cybeasy Solutions">
+              </div>
+
+              <div class="form-group">
+                <label data-i18n="industryLabel">مجال العمل والتخصص (Niche)</label>
+                <input type="text" id="inputIndustry" class="form-input" data-i18n-placeholder="industryPlaceholder" placeholder="مثال: أمن سيبراني وسحابي">
+              </div>
+
+              <div class="form-group col-span-2">
+                <label data-i18n="offeringsLabel">ما تقدمه الشركة (المنتجات / الخدمات)</label>
+                <textarea id="inputOfferings" class="form-textarea" data-i18n-placeholder="offeringsPlaceholder" placeholder="صف منتجاتك أو خدماتك الرئيسية..."></textarea>
+              </div>
+
+              <div class="form-group col-span-2">
+                <label data-i18n="audienceLabel">الجمهور المستهدف (العميل المثالي ICP)</label>
+                <input type="text" id="inputAudience" class="form-input" data-i18n-placeholder="audiencePlaceholder" placeholder="مثال: مدراء التقنية CTOs، المطورين...">
+              </div>
+
+              <div class="form-group col-span-2">
+                <label data-i18n="valuePropLabel">القيمة المضافة والرسالة الجوهرية (Value Proposition)</label>
+                <textarea id="inputValueProp" class="form-textarea" data-i18n-placeholder="valuePropPlaceholder" placeholder="ما الذي يميزك عن المنافسين؟"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: KNOWLEDGE BASE -->
+          <div id="stepContent2" class="wizard-step-content">
+            <div class="step-header">
+              <h3>📚 <span data-i18n="kbHeader">قاعدة المعرفة والملفات المرجعية</span></h3>
+              <p data-i18n="kbDesc">ارفع ملفات الشركة (ملفات تعريفية، دراسات حالة، أسئلة شائعة) ليعتمد عليها الوكيل كحقائق مؤكدة.</p>
+            </div>
+
+            <!-- Drag & Drop Zone -->
+            <div class="dropzone" id="kbDropzone">
+              <div class="dropzone-icon">📁</div>
+              <p data-i18n="dropzoneText">اسحب الملفات هنا أو <strong>اضغط للتصفح</strong></p>
+              <span style="font-size: 0.78rem; color: var(--text-muted);" data-i18n="dropzoneHint">يدعم PDF, DOCX, TXT, MD حتى 25 ميجابايت</span>
+              <input type="file" id="kbFileInput" style="display: none;" multiple accept=".pdf,.docx,.txt,.md">
+            </div>
+
+            <div class="file-badges-list" id="fileBadgesList">
+              <!-- Rendered via JS -->
+            </div>
+
+            <div class="form-group" style="margin-top: 24px;">
+              <label data-i18n="verifiedStatsLabel">أرقام وإحصائيات موثقة للشركة (Proof Points)</label>
+              <textarea id="inputVerifiedStats" class="form-textarea" data-i18n-placeholder="verifiedStatsPlaceholder" placeholder="مثال: خفض تكاليف السحابة بنسبة 45%..."></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 3: CONTENT GUIDELINES Q&A -->
+          <div id="stepContent3" class="wizard-step-content">
+            <div class="step-header">
+              <h3>✍️ <span data-i18n="guidelinesHeader">إعدادات وهيكلة المحتوى العامة</span></h3>
+              <p data-i18n="guidelinesDesc">حدد الصيغ المفضلة للعناوين، طول المقالات، ونبرة الصوت التي سيلتزم بها الوكيل.</p>
+            </div>
+
+            <!-- Headline Styles -->
+            <div class="form-group">
+              <label data-i18n="headlineStyleLabel">نمط العناوين المفضل (Headline Style)</label>
+              <div class="options-grid">
+                <label class="option-card selected">
+                  <input type="radio" name="headlineStyle" value="contrarian" checked>
+                  <span class="option-icon">⚡</span>
+                  <span class="option-title">مخالف للمألوف وجريء</span>
+                  <span class="option-desc">لماذا تفشل أغلب الشركات في X وكيف تتجنب الخطأ</span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="headlineStyle" value="how_to">
+                  <span class="option-icon">📘</span>
+                  <span class="option-title">مباشر وتعليمي</span>
+                  <span class="option-desc">كيف تحقق الهدف X في 5 خطوات عملية ومباشرة</span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="headlineStyle" value="data_driven">
+                  <span class="option-icon">📊</span>
+                  <span class="option-title">قائم على الأرقام</span>
+                  <span class="option-desc">كيف خفضنا تكلفة البنية بنسبة 42% في 30 يوماً</span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="headlineStyle" value="guide">
+                  <span class="option-icon">🏛️</span>
+                  <span class="option-title">دليل شامل ومرجعي</span>
+                  <span class="option-desc">الدليل الكامل والشامل إلى X لعام 2026</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Target Length -->
+            <div class="form-group">
+              <label data-i18n="articleLengthLabel">طول المقالات الافتراضي</label>
+              <div class="options-grid">
+                <label class="option-card">
+                  <input type="radio" name="articleLength" value="short">
+                  <span class="option-icon">⚡</span>
+                  <span class="option-title">سريع ومكثف</span>
+                  <span class="option-desc">600 – 800 كلمة (قراءة 3 دقائق)</span>
+                </label>
+                <label class="option-card selected">
+                  <input type="radio" name="articleLength" value="medium" checked>
+                  <span class="option-icon">📖</span>
+                  <span class="option-title">دليل معياري</span>
+                  <span class="option-desc">1,200 – 1,500 كلمة (قراءة 5 دقائق)</span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="articleLength" value="long">
+                  <span class="option-icon">📚</span>
+                  <span class="option-title">دليل متعمق وشامل</span>
+                  <span class="option-desc">2,000+ كلمة (قراءة 8-10 دقائق)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Tone of Voice -->
+            <div class="form-group">
+              <label data-i18n="toneLabel">نبرة الصوت المعتمدة (Tone of Voice)</label>
+              <div class="options-grid">
+                <label class="option-card selected">
+                  <input type="radio" name="tone" value="authoritative" checked>
+                  <span class="option-icon">🎯</span>
+                  <span class="option-title">خبير وموثوق</span>
+                  <span class="option-desc">أدلة دقيقة، حقائق هندسية، ثقة احترافية</span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="tone" value="conversational">
+                  <span class="option-icon">💬</span>
+                  <span class="option-title">ودود ومحادثاتي</span>
+                  <span class="option-desc">أسلوب زميل لزميل، سلس وبلا حواجز</span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="tone" value="witty">
+                  <span class="option-icon">💡</span>
+                  <span class="option-title">ذكي وجذاب</span>
+                  <span class="option-desc">طرح غير تقليدي، مفارقات ذكية، حيوية</span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="tone" value="educational">
+                  <span class="option-icon">🎓</span>
+                  <span class="option-title">تعليمي ومبسط</span>
+                  <span class="option-desc">شرح من المبادئ الأولى، صفر تعقيد</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Language & Dialect -->
+            <div class="form-group">
+              <label data-i18n="languageLabel">اللغة واللهجة الافتراضية</label>
+              <select id="selectLanguage" name="language" class="form-select">
+                <option value="ar_fusha" selected>فصحى معاصرة رصينة (مع الحفاظ على المصطلحات التقنية)</option>
+                <option value="ar_egyptian">لهجة مصرية مهنية وودودة (تفاعل عالي على الشبكات)</option>
+                <option value="ar_gulf">لهجة خليجية بيضاء (ملائمة لأسواق الخليج العربي)</option>
+                <option value="en_us">English (US / UK Professional Global Tone)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- STEP 4: CUSTOM DIRECTIVES & TABOOS -->
+          <div id="stepContent4" class="wizard-step-content">
+            <div class="step-header">
+              <h3>🛡️ <span data-i18n="directivesHeader">الطلبات الخاصة والكلمات المحظورة</span></h3>
+              <p data-i18n="directivesDesc">حدد أي متطلبات فريدة لشركتك، والكلمات الممنوعة لمنع الركاكة (Anti-AI Slop).</p>
+            </div>
+
+            <!-- Taboo Words Input -->
+            <div class="form-group">
+              <label>
+                <span data-i18n="tabooLabel">الكلمات والتعبيرات الممنوعة تماماً (Anti-Slop Guard)</span>
+                <span class="hint" data-i18n="tabooHint">اكتب واضغط Enter لإضافة كلمة</span>
+              </label>
+              <div class="tag-input-container">
+                <div id="tabooPillsWrapper" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                <input type="text" id="tagInputInline" class="tag-input-inline" placeholder="أضف كلمة محظورة...">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label data-i18n="ctaLabel">الدعوة الأساسية لاتخاذ إجراء (Primary CTA)</label>
+              <input type="text" id="inputPrimaryCta" class="form-input" data-i18n-placeholder="ctaPlaceholder" placeholder="مثال: احجز استشارة مجانية...">
+            </div>
+
+            <div class="form-group">
+              <label data-i18n="specialReqLabel">أي طلبات أو توجيهات خاصة من العميل؟</label>
+              <textarea id="inputSpecialReq" class="form-textarea" data-i18n-placeholder="specialReqPlaceholder" placeholder="مثال: عدم ذكر المنافسين..."></textarea>
+            </div>
+          </div>
+
+          <!-- Wizard Footer Controls -->
+          <div class="wizard-footer">
+            <button type="button" id="btnWizardPrev" class="btn btn-secondary" onclick="prevStep()">
+              ← <span data-i18n="btnBack">السابق</span>
+            </button>
+            <div style="margin-inline-start: auto; display: flex; gap: 12px;">
+              <button type="button" id="btnWizardNext" class="btn btn-primary" onclick="nextStep()">
+                <span data-i18n="btnNext">التالي</span> →
+              </button>
+              <button type="button" id="btnWizardFinish" class="btn btn-success" style="display: none;" onclick="synthesizeAgentPersona()">
+                ✨ <span data-i18n="btnFinish">توليد وتفعيل الـ Agent</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ACTIVATION SUCCESS MODAL -->
+        <div id="activationModal" style="display: none; position: fixed; inset: 0; background: rgba(5, 8, 14, 0.85); backdrop-filter: blur(14px); z-index: 1000; align-items: center; justify-content: center;">
+          <div style="background: var(--bg-card); border: 1px solid var(--border-active); border-radius: var(--radius-xl); padding: 40px; max-width: 650px; width: 90%; margin: 80px auto; text-align: center; box-shadow: var(--shadow-glow);">
+            <div class="activation-animation-icon">✓</div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 8px;">تم تجهيز وتفعيل صانع المحتوى بنجاح!</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">
+              تم تحديث ملف الحوكمة <code style="color: var(--accent-cyan);">.tailorai/Agent.md</code> وحفظ هوية العميل وقواعد المحتوى بدقة.
+            </p>
+            
+            <div class="blueprint-preview-box" id="blueprintSummaryCode"></div>
+
+            <div style="display: flex; justify-content: center; gap: 14px; margin-top: 24px;">
+              <button type="button" class="btn btn-primary" onclick="document.getElementById('activationModal').style.display='none'; switchView('studio');">
+                <span data-i18n="btnLaunchStudio">الانتقال إلى استوديو المحتوى 🚀</span>
+              </button>
+              <button type="button" class="btn btn-secondary" onclick="document.getElementById('activationModal').style.display='none'; switchView('workspace');">
+                <span>معاينة ملفات .tailorai</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 2: CONTENT CREATOR STUDIO
+           =================================================================== -->
+      <section id="view-studio" class="view-section">
+        <div class="studio-layout">
+          
+          <!-- Left Control Panel -->
+          <div class="studio-panel">
+            <div class="studio-panel-header">
+              <h3><span>🎨</span> <span data-i18n="studioTitle">استوديو المحتوى</span></h3>
+              <span class="brand-badge">Tailored Agent</span>
+            </div>
+
+            <!-- Active Brand Banner -->
+            <div class="active-brand-banner">
+              <div class="brand-dot"></div>
+              <div class="active-brand-info">
+                <h4 id="studioBrandName">Cybeasy CloudGuard</h4>
+                <p id="studioBrandDesc">Cloud Security & DevSecOps • Authoritative</p>
+              </div>
+            </div>
+
+            <!-- Content Format Picker -->
+            <div class="form-group">
+              <label data-i18n="contentTypeLabel">نوع المحتوى المطلوب:</label>
+              <div class="type-pills">
+                <div class="type-pill active" data-type="article" onclick="setContentType('article')">
+                  <span>📄</span>
+                  <span data-i18n="typeArticle">مقالة SEO متوافقة مع محركات البحث</span>
+                </div>
+                <div class="type-pill" data-type="linkedin" onclick="setContentType('linkedin')">
+                  <span>💼</span>
+                  <span data-i18n="typeLinkedin">منشور لينكد إن قيادي (Thought Leadership)</span>
+                </div>
+                <div class="type-pill" data-type="twitter" onclick="setContentType('twitter')">
+                  <span>🧵</span>
+                  <span data-i18n="typeTwitter">سلسلة تغريدات X (Viral Thread)</span>
+                </div>
+                <div class="type-pill" data-type="newsletter" onclick="setContentType('newsletter')">
+                  <span>📧</span>
+                  <span data-i18n="typeNewsletter">نشرة بريدية (Email Newsletter)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Topic / Angle Input -->
+            <div class="form-group">
+              <label data-i18n="topicLabel">موضوع المحتوى أو الفكرة الأساسية:</label>
+              <textarea id="inputTopic" class="form-textarea" rows="3" data-i18n-placeholder="topicPlaceholder" placeholder="مثال: كيف تحمي بنيتك السحابية وتخفض التكاليف..."></textarea>
+            </div>
+
+            <!-- Generate Button -->
+            <button type="button" id="btnGenerate" class="btn btn-primary" style="width: 100%;" onclick="generateContent()">
+              ✨ <span data-i18n="btnGenerate">توليد المحتوى الآن ✨</span>
+            </button>
+          </div>
+
+          <!-- Right Output Canvas -->
+          <div class="studio-canvas">
+            <div class="canvas-toolbar">
+              <div class="preview-tabs">
+                <button type="button" class="preview-tab-btn active" data-mode="rendered" onclick="setPreviewMode('rendered')">معاينة التنسيق</button>
+                <button type="button" class="preview-tab-btn" data-mode="markdown" onclick="setPreviewMode('markdown')">كود Markdown</button>
+              </div>
+
+              <!-- Quality Metrics -->
+              <div class="canvas-metrics">
+                <span class="metric-pill success" data-i18n="slopCleanBadge">🛡️ خالي من الركاكة: 100%</span>
+                <span class="metric-pill cyan" id="metricWordCount">📝 1,240 كلمة</span>
+                <span class="metric-pill" id="metricReadTime">⏱️ 5 دقائق</span>
+              </div>
+            </div>
+
+            <!-- Output Viewport -->
+            <div class="output-viewport" id="outputViewport">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Canvas Bottom Quick Actions -->
+            <div class="canvas-footer">
+              <div class="canvas-quick-edits">
+                <button type="button" class="btn-chip" onclick="quickRefine('punchy')">⚡ اجعلها أكثر إيجازاً</button>
+                <button type="button" class="btn-chip" onclick="quickRefine('stats')">📊 أضف إحصائيات</button>
+                <button type="button" class="btn-chip" onclick="quickRefine('fusha')">🗣️ تحويل اللهجة</button>
+              </div>
+
+              <div style="display: flex; gap: 10px;">
+                <button type="button" class="btn btn-secondary" onclick="copyMarkdown()">
+                  📋 <span data-i18n="btnCopy">نسخ Markdown</span>
+                </button>
+                <button type="button" class="btn btn-primary" onclick="downloadMarkdown()">
+                  💾 <span data-i18n="btnDownload">تحميل .md</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 3: WORKSPACE & GOVERNANCE EXPLORER (.tailorai)
+           =================================================================== -->
+      <section id="view-workspace" class="view-section">
+        <div class="workspace-explorer-grid">
+          
+          <!-- File Tree -->
+          <div class="file-tree-card">
+            <h4 style="margin-bottom: 14px; font-size: 0.95rem; color: var(--accent-cyan); display: flex; align-items: center; gap: 8px;">
+              <span>🗂️</span>
+              <span>ملفات الحوكمة (.tailorai)</span>
+            </h4>
+            <ul class="tree-list" id="workspaceFileList">
+              <!-- Rendered via JS -->
+            </ul>
+          </div>
+
+          <!-- File Content Viewer / Editor -->
+          <div class="file-viewer-card">
+            <div class="viewer-header">
+              <span class="viewer-filename" id="viewerFilename">.tailorai/Agent.md</span>
+              <button type="button" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.85rem;" onclick="saveActiveFile()">
+                💾 حفظ التعديل
+              </button>
+            </div>
+            <textarea id="viewerEditor" class="viewer-editor" spellcheck="false"></textarea>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/workspace-data.js"></script>
+  <script src="js/setup-wizard.js"></script>
+  <script src="js/content-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
