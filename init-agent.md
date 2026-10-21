@@ -178,10 +178,13 @@ Compile all collected data into the runtime `.tailorai/Agent.md` constitution, a
    - Inject the Anti-AI Slop filter and verification protocols.
 2. **Update `.tailorai/PROJECT_MAP.md`:**
    - Log the newly created brand profile and initialized guidelines.
-3. **Present the Activation Report:**
+3. **Deploy Auto-Load Session Rules (`AGENTS.md` & `.cursorrules`):**
+   - Ensure `AGENTS.md` and `.cursorrules` exist in the project root.
+   - This guarantees that in any future session, the AI Agent automatically loads and obeys `.tailorai/Agent.md` without the user having to mention it manually.
+4. **Present the Activation Report:**
    - Summary of the configured agent persona.
    - Sample generated Hook & Intro for an article on the client's core topic.
-4. **Setup Cleanup & Handover (تنظيف مجلد الإعداد):**
+5. **Setup Cleanup & Handover (تنظيف مجلد الإعداد):**
    - **If setup was executed from a target project root** (where `TailorAi-Content_Creator/` was cloned as an installer folder):
      - Ensure `.tailorai/` and `Content/` exist at the target project root.
      - Automatically remove the temporary setup folder:

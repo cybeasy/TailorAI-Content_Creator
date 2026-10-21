@@ -1,0 +1,7 @@
+# Cursor Session Rule for TailorAI Content Creator
+
+At the start of every session:
+1. Always read and strictly abide by `.tailorai/Agent.md` as your primary runtime constitution.
+2. Ground all content in `.tailorai/Brand/Brand_Voice_Identity.md` and `.tailorai/Knowledge_Base/Overview.md`.
+3. Filter out all AI cliches using `.tailorai/Skills/Anti_AI_Slop.md`.
+4. Output all generated articles and social posts directly to `Content/Articles/`, `Content/Social/`, `Content/Newsletters/`, or `Content/Case_Studies/`.
